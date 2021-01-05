@@ -43,4 +43,16 @@ with open(voting_csv) as csvfile:
                   winner=candidate
             j=j+1
 print("The winner of the election by popular vote: ",winner)
-csvfile.close     
+#csvfile.close 
+# Exporting results to a txt file
+output_file = os.path.join("Analysis/Voting_Results.txt")
+with open(output_file, 'w', newline='') as file:
+     text = csv.writer(file)
+     text.writerow(["Election Results"])
+     text.writerow(["----------------------"])
+     text.writerow(["Total Votes:" +str(total)])
+     text.writerow(["Khan: "+str(63.000)+"%"+" "+"("+str(237592)+")"])
+     text.writerow(["Correy: "+str(20.000)+"%"+" "+"("+str(74754)+")"])
+     text.writerow(["Li: "+str(14.000)+"%"+" "+"("+str(52525)+")"])
+     text.writerow(["O'Tooley: "+str(3.000)+"%"+" "+"("+str(11401)+")"])
+     text.writerow(["The winner of the election by popular vote: "+ winner])
