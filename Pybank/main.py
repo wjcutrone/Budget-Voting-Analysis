@@ -36,6 +36,29 @@ with open(budget_csv) as csvfile:
 
     print("Greatest Increase in Profits: "+months[index_monthly_change+1]+" "+str(max_monthly_change))
 
+    #Greatest Decrease in Profit/Loss and corresponding month
+    min_monthly_change=min(monthly_change)
+    index_monthly_change=0
+    for i in range(len(monthly_change)):
+        if monthly_change[i]==min_monthly_change:
+            index_monthly_change = i
+            break
+    
+    print("Greatest Decrease in Profits: "+months[index_monthly_change+1]+ " "+str(min_monthly_change))
+
+
+output_file = os.path.join("Analysis/Financial Results.txt")
+with open(output_file, 'w', newline='') as file:
+     text = csv.writer(file)
+     text.writerow(["Financial Analysis"])
+     text.writerow(["-----------------------------------"])
+     text.writerow(["Total Months: ",str(len(months))])
+     text.writerow(["Total:$ "+str(sum(profit_loss))])
+     text.writerow(["Average Change: "+"$"+str(average_monthly_change)])
+     text.writerow(["Greatest Increase in Profits: "+months[index_monthly_change+1]+" "+str(max_monthly_change)])
+     text.writerow(["Greatest Decrease in Profits: "+months[index_monthly_change+1]+ " "+str(min_monthly_change)])
+
+
 
 
    
