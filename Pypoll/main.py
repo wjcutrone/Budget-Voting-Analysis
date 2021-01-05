@@ -2,6 +2,7 @@
 import votes
 import candidates
 import os
+import csv
 
 total = votes.num()
 print("Total Votes:",total)   
